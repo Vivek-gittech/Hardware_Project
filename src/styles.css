@@ -1,0 +1,134 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Manrope", sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 14px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cream: var(--cream);
+  --color-cream-foreground: var(--cream-foreground);
+  --color-ivory: var(--ivory);
+  --color-espresso: var(--espresso);
+  --color-gold: var(--gold);
+  --color-violet-glow: var(--violet-glow);
+}
+
+:root {
+  --radius: 0.9rem;
+  --background: oklch(0.12 0.006 275);
+  --foreground: oklch(0.96 0.005 270);
+  --card: oklch(0.155 0.007 275);
+  --card-foreground: oklch(0.96 0.005 270);
+  --popover: oklch(0.17 0.007 275);
+  --popover-foreground: oklch(0.96 0.005 270);
+  --primary: oklch(0.74 0.07 75);
+  --primary-foreground: oklch(0.16 0.01 60);
+  --secondary: oklch(0.2 0.008 275);
+  --secondary-foreground: oklch(0.96 0.005 270);
+  --muted: oklch(0.2 0.008 275);
+  --muted-foreground: oklch(0.68 0.02 275);
+  --accent: oklch(0.22 0.01 275);
+  --accent-foreground: oklch(0.96 0.005 270);
+  --destructive: oklch(0.62 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.26 0.008 275);
+  --input: oklch(0.28 0.008 275);
+  --ring: oklch(0.74 0.07 75);
+  --cream: oklch(0.965 0.006 80);
+  --cream-foreground: oklch(0.24 0.02 50);
+  --ivory: oklch(0.99 0.003 80);
+  --espresso: oklch(0.24 0.015 50);
+  --gold: oklch(0.74 0.07 75);
+  --violet-glow: oklch(0.55 0.15 280);
+  --gradient-showroom: radial-gradient(120% 90% at 20% 0%, oklch(0.2 0.03 275) 0%, oklch(0.12 0.006 275) 55%),
+    radial-gradient(80% 80% at 90% 100%, oklch(0.2 0.03 60 / 0.6) 0%, transparent 60%);
+  --gradient-card: linear-gradient(180deg, oklch(0.165 0.007 275) 0%, oklch(0.135 0.006 275) 100%);
+  --shadow-glow: 0 30px 80px -30px oklch(0.55 0.15 280 / 0.45);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+@utility font-display-italic {
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+@utility text-glow {
+  text-shadow: 0 0 40px oklch(1 0 0 / 0.25);
+}
+@utility eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+@utility bg-showroom {
+  background: var(--gradient-showroom);
+}
+@utility card-showroom {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3xl);
+  transition: border-color 0.4s ease, box-shadow 0.5s ease, transform 0.5s ease;
+  &:hover {
+    border-color: oklch(0.38 0.03 275);
+    box-shadow: var(--shadow-glow);
+  }
+}
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
